@@ -20,7 +20,10 @@ class MentoCarloController extends Controller
             array_push($demand,$request['demand'.$i]);
             array_push($frequency,$request['frequency'.$i]);
         }
+        if(empty($demand) || empty($frequency))
+            return redirect('/')->with('message', 'empty');
 
+//        if(count($demand) == 0 || isEmpty())
 
         // calculate total frequency
         $total_frequency = array_sum($frequency);
@@ -41,9 +44,12 @@ class MentoCarloController extends Controller
         }
 
         // generating intervals
-
-        $parts = explode('.', (string) $cumulative[0]);
-        $max = $parts[1];
+        if(gettype($cumulative[0]) == 'integer')
+            $max = 0;
+        else{
+            $parts = explode('.', (string) $cumulative[0]);
+            $max = $parts[1];
+        }
         $intervals['1'] = $max;
         $start = $max + 1;
         for ($i = 1; $i < count($cumulative); $i++){

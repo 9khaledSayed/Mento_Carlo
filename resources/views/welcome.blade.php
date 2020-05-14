@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="page-title" style="margin-top: 5%;">
-                <h1>Solution <small></small></h1>
+                <h1>Inventory Demand <small></small></h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-home"></i></a></li>
-                    <li class="active">Solution</li>
+                    <li class="active">Inventory Demand</li>
                 </ol>
             </div>
         </div>
@@ -15,11 +15,16 @@
         <div class="panel panel-card margin-b-30">
             <!-- Start .panel -->
             <div class="panel-heading">
-                <h4 class="panel-title"> Inline form</h4>
+                <h4 class="panel-title"> Inventory Demand Info</h4>
                 <div class="panel-actions">
                     <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
                     <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
                 </div>
+                @if(session('message'))
+                <div class="alert alert-danger">
+                    <i class="fa fa-frown-o" aria-hidden="true" style="font-size: 22px"></i> Please enter the daily demand and frequency and click the add button!
+                </div>
+                @endif
             </div>
 
 
