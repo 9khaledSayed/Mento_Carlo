@@ -21,63 +21,111 @@
                     <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
                 </div>
             </div>
-            <div class="panel-body">
-                <form role="form" class="form-inline" style="text-align: center">
-                    <div class="form-group">
+
+
+
+
+                <form role="form" class="form-inline" style="text-align:center" action="/result" method="POST">
+                 @csrf
+                    <div class="panel-body">
+
+            <div style="margin-bottom:3%">
+
+                        <div class="form-group">
                         <label  class="sr-only">DEMAND</label>
-                        <input type="number"
+                        <input id="demand_input" type="number"
                                placeholder="Enter daily demand"
                                class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword2" class="sr-only">Frequency</label>
-                        <input type="number"
+                        <input id="frequency_input" type="number"
                                placeholder="Enter frequency"
                                class="form-control">
                     </div>
 
-                    <button class="btn btn-primary" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <button class="btn btn-primary" onclick="add()" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
+            </div>
                     <div class="panel-body">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th>DEMAND</th>
-                                <th>Frequency</th>
-                                <th>ACTION</th>
+                                <th style="text-align:center"> DEMAND</th>
+                                <th style="text-align:center">Frequency</th>
+                                <th style="text-align:center">ACTION</th>
                             </tr>
                             </thead>
-                            <tbody >
-                            <tr>
-                                <td>15</td>
-                                <td>20</td>
-                                <td>
-                                    <button class="btn btn-primary" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td>20</td>
-                                <td>
-                                    <button class="btn btn-primary" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td>20</td>
-                                <td>
-                                    <button class="btn btn-primary" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
+                            <tbody id="table">
+
                             </tbody>
                         </table>
                     </div>
 
+                    <input id="size" name="size_array" value="0" style="display:none">
+
                     <div  style="text-align: center; margin: 20px">
+
                         <button class="btn btn-primary" type="submit">confirm</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+
+        var size = document.getElementById('size');
+
+        function add() {
+
+            size.value++;
+
+            var table         = document.getElementById('table');
+            var demand_inp    = document.getElementById('demand_input').value;
+            var frequency_inp = document.getElementById('frequency_input').value;
+
+            if (demand_inp != "" && frequency_inp != "") {
+                var T_R = document.createElement('tr');
+                var T_D_1 = document.createElement('td');
+                var T_D_2 = document.createElement('td');
+                var T_D_3 = document.createElement('td');
+
+                var inp_1 = document.createElement('input');
+                inp_1.name = 'demand' + size.value;
+                inp_1.value = demand_inp;
+                inp_1.style.background = 'transparent';
+                inp_1.style.border = '0px';
+                inp_1.style.textAlign = 'center';
+
+                var inp_2 = document.createElement('input');
+                inp_2.name = 'frequency' + size.value;
+                inp_2.value = frequency_inp;
+                inp_2.style.background = 'transparent';
+                inp_2.style.border = '0px';
+                inp_2.style.textAlign = 'center';
+
+                var trash_btn = document.createElement('button');
+                trash_btn.className = 'btn btn-primary'
+                trash_btn.setAttribute("type", "button");
+                trash_btn.innerHTML = '<i class="fa fa-trash-o"></i>';
+                trash_btn.addEventListener("click", function(){
+                    remove( T_R )
+                });
+
+                T_D_1.appendChild(inp_1);
+                T_D_2.appendChild(inp_2);
+                T_D_3.appendChild(trash_btn);
+                T_R.appendChild(T_D_1);
+                T_R.appendChild(T_D_2);
+                T_R.appendChild(T_D_3)
+                table.appendChild(T_R);
+            }else {alert('you must enter the daily demand & frequency');}
+        }
+
+        function remove(T_R) {
+            size.value--;
+            T_R.remove();
+        }
+    </script>
 @endsection

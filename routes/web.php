@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/result', 'MentoCarloController@simulation');
+Route::post('/result', 'MentoCarloController@show_result');
