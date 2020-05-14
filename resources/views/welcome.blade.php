@@ -24,21 +24,55 @@
             <div class="panel-body">
                 <form role="form" class="form-inline" style="text-align: center">
                     <div class="form-group">
-                        <label for="exampleInputEmail2" class="sr-only">DEMAND</label>
-                        <input type="number" placeholder="Enter email" id="exampleInputEmail2"
+                        <label  class="sr-only">DEMAND</label>
+                        <input type="number"
+                               placeholder="Enter daily demand"
                                class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword2" class="sr-only">Password</label>
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            id="exampleInputPassword2"
+                        <label for="exampleInputPassword2" class="sr-only">Frequency</label>
+                        <input type="number"
+                               placeholder="Enter frequency"
                                class="form-control">
                     </div>
 
                     <button class="btn btn-primary" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>DEMAND</th>
+                                <th>Frequency</th>
+                                <th>ACTION</th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr>
+                                <td>15</td>
+                                <td>20</td>
+                                <td>
+                                    <button class="btn btn-primary" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>20</td>
+                                <td>
+                                    <button class="btn btn-primary" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>20</td>
+                                <td>
+                                    <button class="btn btn-primary" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                     <div  style="text-align: center; margin: 20px">
                         <button class="btn btn-primary" type="submit">confirm</button>
                     </div>
