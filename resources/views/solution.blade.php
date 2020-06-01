@@ -15,13 +15,47 @@
 <div class="panel panel-card margin-b-30 ">
     <!-- Start .panel -->
     <div class="panel-heading">
-        <h4 class="panel-title"> Mento Carlo Simulation</h4>
+        <h4 class="panel-title"> Monte Carlo Simulation</h4>
         <div class="panel-actions">
             <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
             <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
         </div>
     </div>
     <div class="panel-body">
+        <form role="form" class="form-inline" style="text-align:center" action="{{route('experiment')}}" method="POST">
+            @csrf
+            <label>Choose Random Numbers</label>
+            <div class="">
+                <select class="selectpicker" multiple data-live-search="true" name="numbers[]">
+                    @foreach($random_numbers as $number)
+                        <option>{{$number}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="" hidden>
+                <select class="form-control" multiple name="demand[]">
+                    @foreach($demand as $d)
+                        <option selected >{{$d}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="" hidden>
+                <select class="form-control" multiple name="interval_keys[]">
+                    @foreach($interval_keys as $key)
+                        <option selected>{{$key}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="" hidden>
+                <select class="form-control" multiple name="interval_values[]">
+                    @foreach($interval_values as $values)
+                        <option selected>{{$values}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">calculate</button>
+
+        </form>
         <table class="table table-bordered">
             <thead>
             <tr>

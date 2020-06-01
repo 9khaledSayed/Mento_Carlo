@@ -69,6 +69,30 @@ class MentoCarloController extends Controller
         shuffle($random_numbers);
         // select random numbers
 
-       return view('solution' , compact(['total_frequency', 'probabilities', 'cumulative', 'interval_keys', 'interval_values' , 'demand']));
+       return view('solution' , compact(['total_frequency', 'probabilities', 'cumulative', 'interval_keys', 'interval_values' , 'demand', 'random_numbers']));
     }
+
+    public function experiment(Request $request){
+        $numbers = $request->numbers;
+        $demand = $request->demand;
+        $interval_keys = $request->interval_keys;
+        $interval_values = $request->interval_values;
+        $result = array();
+        foreach ($numbers as $number){
+            for($i = 0; $i<count($interval_keys); $i++){
+                if($number >= $interval_keys[$i] && $number <= $interval_values[$i]){
+                    $result[$number] = $demand[$i];
+                    break;
+                }elseif($number >= max($interval_keys)){
+                    $result[$number] = $demand[count($demand)-1];
+                    break;
+                }
+            }
+        }
+        $random_numbers = array_keys($result);
+        $daily_demand = array_values($result);
+        return view('experiment', compact(['random_numbers', 'daily_demand']));
+
+    }
+
 }

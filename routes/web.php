@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/result', 'MentoCarloController@show_result');
+Route::post('result', 'MentoCarloController@show_result')->name('result');
+
+Route::post('experiment', 'MentoCarloController@experiment')->name('experiment');
