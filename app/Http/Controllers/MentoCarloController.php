@@ -6,43 +6,33 @@ use Illuminate\Http\Request;
 
 class MentoCarloController extends Controller
 {
-
     public function show_result(Request $request){
         /* read from user */
+        if(empty($demand) || empty($frequency))
+            return redirect('/')->with('message', 'empty');
 
         $size_array = $request['size_array'];
-
         $demand    =  array();
         $frequency =  array();
-
         for ( $i = 1 ; $i <= $size_array ; $i++)
         {
             array_push($demand,$request['demand'.$i]);
             array_push($frequency,$request['frequency'.$i]);
         }
-        if(empty($demand) || empty($frequency))
-            return redirect('/')->with('message', 'empty');
-
-//        if(count($demand) == 0 || isEmpty())
-
         // calculate total frequency
         $total_frequency = array_sum($frequency);
-
         $probabilities = [];
         // calculate probabilities
         for ($i = 0; $i < count($frequency); $i++){
             $probabilities[$i] = $frequency[$i]/$total_frequency;
         }
-
         // calculate cumulative
-
         $cumulative = [];
         for ($i = 0; $i < count($probabilities); $i++){
             $cumulative[$i] = 0;
             for($k = 0; $k <= $i; $k++)
                 $cumulative[$i] += $probabilities[$k];
         }
-
         // generating intervals
         if(gettype($cumulative[0]) == 'integer')
             $max = 0;
