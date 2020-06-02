@@ -26,54 +26,44 @@
                 </div>
                 @endif
             </div>
-
-
-
-
-                <form role="form" class="form-inline" style="text-align:center" action="/result" method="POST">
-                 @csrf
-                    <div class="panel-body">
-
-            <div style="margin-bottom:3%">
-
+            <form role="form" class="form-inline" style="text-align:center" action="/result" method="POST">
+             @csrf
+                <div class="panel-body">
+                    <div style="margin-bottom:3%">
                         <div class="form-group">
-                        <label  class="sr-only">DEMAND</label>
-                        <input id="demand_input" type="number"
-                               placeholder="Enter daily demand"
-                               class="form-control">
+                            <label  class="sr-only">DEMAND</label>
+                            <input id="demand_input" type="number"
+                                   placeholder="Enter daily demand"
+                                   class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword2" class="sr-only">Frequency</label>
+                            <input id="frequency_input" type="number"
+                                   placeholder="Enter frequency"
+                                   class="form-control">
+                        </div>
+                        <button class="btn btn-primary" onclick="add()" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword2" class="sr-only">Frequency</label>
-                        <input id="frequency_input" type="number"
-                               placeholder="Enter frequency"
-                               class="form-control">
-                    </div>
-
-                    <button class="btn btn-primary" onclick="add()" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-
-            </div>
                     <div class="panel-body">
                         <table class="table table-bordered">
                             <thead>
-                            <tr>
-                                <th style="text-align:center"> DEMAND</th>
-                                <th style="text-align:center">Frequency</th>
-                                <th style="text-align:center">ACTION</th>
-                            </tr>
+                                <tr>
+                                    <th style="text-align:center"> DEMAND</th>
+                                    <th style="text-align:center">Frequency</th>
+                                    <th style="text-align:center">ACTION</th>
+                                </tr>
                             </thead>
                             <tbody id="table">
 
                             </tbody>
                         </table>
                     </div>
-
                     <input id="size" name="size_array" value="0" style="display:none">
-
-                    <div  style="text-align: center; margin: 20px">
-
-                        <button class="btn btn-primary" type="submit">confirm</button>
-                    </div>
-                </form>
+                    <div style="text-align: center; margin: 20px">
+                    <button class="btn btn-primary" type="submit">confirm</button>
+                </div>
+                </div>
+            </form>
             </div>
         </div>
     </div>
