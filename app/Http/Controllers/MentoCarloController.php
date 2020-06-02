@@ -73,10 +73,15 @@ class MentoCarloController extends Controller
     }
 
     public function experiment(Request $request){
+        // get the random numbers  array choosen by the user
         $numbers = $request->numbers;
+        // get the daily demand array
         $demand = $request->demand;
+
+        
         $interval_keys = $request->interval_keys;
         $interval_values = $request->interval_values;
+
         $result = array();
         foreach ($numbers as $number){
             for($i = 0; $i<count($interval_keys); $i++){
@@ -89,8 +94,10 @@ class MentoCarloController extends Controller
                 }
             }
         }
+
         $random_numbers = array_keys($result);
         $daily_demand = array_values($result);
+
         return view('experiment', compact(['random_numbers', 'daily_demand']));
 
     }

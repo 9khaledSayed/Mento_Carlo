@@ -4,7 +4,6 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title" style="margin-top: 5%;">
-            <h1>Solution <small></small></h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-home"></i></a></li>
                 <li class="active">Solution</li>
@@ -24,8 +23,8 @@
     <div class="panel-body">
         <form role="form" class="form-inline" style="text-align:center" action="{{route('experiment')}}" method="POST">
             @csrf
-            <label>Choose Random Numbers</label>
-            <div class="">
+            <label style="margin:1%">Choose Random Numbers</label>
+            <div style="margin:1%" >
                 <select class="selectpicker" multiple data-live-search="true" name="numbers[]">
                     @foreach($random_numbers as $number)
                         <option>{{$number}}</option>
@@ -53,7 +52,7 @@
                     @endforeach
                 </select>
             </div>
-            <button class="btn btn-primary" type="submit">calculate</button>
+            <button class="btn btn-primary" style="margin:1%" type="submit">calculate</button>
 
         </form>
         <table class="table table-bordered">
