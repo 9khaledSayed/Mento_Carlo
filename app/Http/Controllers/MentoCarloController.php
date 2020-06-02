@@ -63,11 +63,16 @@ class MentoCarloController extends Controller
     }
 
     public function experiment(Request $request){
+        // get data from request
         $numbers = $request->numbers;
         $demand = $request->demand;
         $interval_keys = $request->interval_keys;
         $interval_values = $request->interval_values;
+        /* array $result contains the coresponding demand for each random number */
         $result = array();
+        /* check each number if number[i] in the range min(interval_key[i]) to max(interval_value[i])
+            then $result[i] = $demand[i]
+        */
         foreach ($numbers as $number){
             for($i = 0; $i<count($interval_keys); $i++){
                 if($number >= $interval_keys[$i] && $number <= $interval_values[$i]){
